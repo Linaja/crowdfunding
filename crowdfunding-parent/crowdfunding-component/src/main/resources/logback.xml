@@ -14,5 +14,5 @@
     </root>
 
     <!-- 例外的输出级别 -->
-    <logger name="pers.llj.crowdfunding.entity.mapper" level="DEBUG" />
+    <logger name="pers.llj.crowdfunding.entity.mapper.AdminMapper" level="DEBUG" />
 </configuration>
