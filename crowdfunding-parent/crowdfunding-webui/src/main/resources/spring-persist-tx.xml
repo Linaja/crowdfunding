@@ -32,7 +32,6 @@
     <aop:config>
         <!-- 配置事务切面 -->
         <aop:pointcut id="txPointcut" expression="execution( * *..*ServiceImpl.*(..))"/>
-
         <!-- 组装切面 -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
