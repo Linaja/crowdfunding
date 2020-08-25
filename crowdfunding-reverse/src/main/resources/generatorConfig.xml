@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
 
-    <!--引入外部 properties文件 -->
+    <!--引入外部 properties 文件 -->
     <properties resource="jdbc.properties"/>
 
     <context id="DB2Tables" targetRuntime="Mybatis3">
@@ -21,7 +21,7 @@
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
 
-        <!-- 是否将 DECIMAL 和 NUMERIC类型的字段转换为 java.math.BigDecimal，默认为 false -->
+        <!-- 是否将 DECIMAL 和 NUMERIC 类型的字段转换为 java.math.BigDecimal，默认为 false -->
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
@@ -33,7 +33,7 @@
             <property name="trimString" value="true" />
         </javaModelGenerator>
 
-        <!-- 生成xml映射文件存放位置 -->
+        <!-- 生成 xml 映射文件存放位置 -->
         <sqlMapGenerator targetPackage="mybatis/mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
