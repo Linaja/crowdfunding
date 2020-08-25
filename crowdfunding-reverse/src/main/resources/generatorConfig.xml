@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
 
-    <!--引入外部properties文件 -->
+    <!--引入外部 properties文件 -->
     <properties resource="jdbc.properties"/>
 
     <context id="DB2Tables" targetRuntime="Mybatis3">

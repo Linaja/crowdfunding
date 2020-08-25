@@ -13,6 +13,9 @@ public class Admin {
 
     private Date creationTime;
 
+    public Admin() {
+    }
+
     public Admin(Long account, String password) {
         this(account,password,null,null);
     }
