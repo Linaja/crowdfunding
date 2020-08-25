@@ -12,7 +12,7 @@ import pers.llj.crowdfunding.service.AdminService;
  * 测试事务
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml","classpath:spring-persist-tx.xml"})
+@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml", "classpath:spring-persist-tx.xml"})
 public class TestTransaction {
 
     @Autowired

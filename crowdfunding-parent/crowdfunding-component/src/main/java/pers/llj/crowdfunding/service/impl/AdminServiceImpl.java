@@ -23,4 +23,9 @@ public class AdminServiceImpl implements AdminService {
     public void removeAdmin(Admin admin) {
         adminMapper.deleteByPrimaryKey(admin.getAccount());
     }
+
+    @Override
+    public Admin getAdminByAccount(Admin admin) {
+        return adminMapper.selectByPrimaryKey(admin.getAccount());
+    }
 }

@@ -5,6 +5,14 @@
 </head>
 <body>
 <h2>index.jsp</h2>
-<a href="${pageContext.request.contextPath}/dispatcher/success">点击跳转至成功页面</a>
+<form action="${pageContext.request.contextPath}/admin/login" method="post">
+    <label>账号：
+        <input type="text" name="account">
+    </label><br>
+    <label>密码：
+        <input type="password" name="password">
+    </label><br>
+    <input type="submit" value="登录">
+</form>
 </body>
 </html>
