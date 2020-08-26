@@ -1,52 +1,65 @@
-<%@ page  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keys" content="">
-    <meta name="author" content="">
-    <base href="http://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath }/" />
-    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/font-awesome.min.css">
-    <link rel="stylesheet" href="static/css/login.css">
-    <script src="static/jquery/jquery-2.1.1.min.js"></script>
-    <script src="static/bootstrap/js/bootstrap.min.js"></script>
-    <style>
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base href="http://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath }/"/>
     <title>尚筹网</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src="static/js/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="static/js/popper.min.js" crossorigin="anonymous"></script>
+    <script src="static/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <div>
-                <a class="navbar-brand" href="index.html" style="font-size: 32px;">尚筹网-创意产品众筹平台</a>
-            </div>
+<div class="container-fluid">
+
+    <div class="row bg-light fixed-top">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <!-- 主标题 -->
+                <span class="navbar-brand">尚筹网</span>
+                <!-- 自适应扩展按钮 -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- 次级按钮 -->
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">　主页</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">　关于</a></li>
+                    </ul>
+                    <a class="btn btn-outline-primary my-2 my-sm-0" id="btn_login_register_name" href="#">注册</a>
+                </div>
+            </nav>
         </div>
+        <div class="col-md-2"></div>
     </div>
-</nav>
-
-<div class="container">
-
-    <form action="admin/login" method="post" class="form-signin" role="form">
-        <h2 class="form-signin-heading">
-            <i class="glyphicon glyphicon-log-in"></i> 管理员登录
-        </h2>
-        <p>${requestScope.exception.message }</p>
-        <div class="form-group has-success has-feedback">
-            <input type="text" name="account" value="123456789" class="form-control"
-                   placeholder="请输入登录账号" autofocus> <span
-                class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
-        <div class="form-group has-success has-feedback">
-            <input type="text" name="password" value="001257" class="form-control"
-                   placeholder="请输入登录密码" style="margin-top: 10px;"> <span
-                class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-        <button type="submit" class="btn btn-lg btn-success btn-block">登录</button>
-    </form>
+    <div style="height: 200px"></div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <form class="col-md-4" method="post" action="admin/login">
+            <h3 class="text-center text-primary">
+                登录
+            </h3>
+            <form role="form">
+                <div class="form-group">
+                    <label for="textInputEmail1">账号</label>
+                    <input type="text" class="form-control" id="textInputEmail1" name="account" autocomplete="off" value="123456789"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">密码</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" autocomplete="off" value="001257"/>
+                </div>
+                <div class="form-group" style="margin-top: 30px;">
+                    <input type="submit" class="form-control btn btn-primary" value="登录"/>
+                </div>
+            </form>
+        </form>
+        <div class="col-md-4"></div>
+    </div>
 </div>
 </body>
 </html>

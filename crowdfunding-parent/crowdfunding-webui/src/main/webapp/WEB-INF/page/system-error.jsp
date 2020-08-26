@@ -1,50 +1,71 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keys" content="">
-    <meta name="author" content="">
-    <title>尚筹网-系统错误</title>
-    <base href="http://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath }/" />
-    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/font-awesome.min.css">
-    <script type="text/javascript" src="static/jquery/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="static/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            $("button").click(function(){
-                window.history.back();
-            });
-        });
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base href="http://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath }/"/>
+    <title>尚筹网</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src="static/js/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="static/js/popper.min.js" crossorigin="anonymous"></script>
+    <script src="static/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script>
+        $(function (){
+            $("#btn-return").click(function (){
+                window.history.back()
+            })
+        })
     </script>
-    <style></style>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <div>
-                <a class="navbar-brand" href="index.html" style="font-size: 32px;">尚筹网-创意产品众筹平台</a>
+<div class="container-fluid">
+
+    <div class="row bg-light fixed-top">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <!-- 主标题 -->
+                <span class="navbar-brand">尚筹网</span>
+                <!-- 自适应扩展按钮 -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- 次级按钮 -->
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">　主页</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">　关于</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div style="height: 200px"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <h3 class="text-center">
+                    尚筹网系统消息
+                </h3>
+                <div class="jumbotron">
+                    <h2>系统错误</h2>
+                    <p>
+                        原因：${requestScope.exception.message}
+                    </p>
+                    <p>
+                        <button class="btn btn-primary btn-large" id="btn-return">返回上一页面</button>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-2">
             </div>
         </div>
     </div>
-</nav>
-
-<div class="container">
-
-    <h2 class="form-signin-heading" style="text-align: center;">
-        <i class="glyphicon glyphicon-log-in"></i> 尚筹网系统消息
-    </h2>
-    <!--
-        requestScope对应的是存放request域数据的Map
-        requestScope.exception相当于request.getAttribute("exception")
-        requestScope.exception.message相当于exception.getMessage()
-     -->
-    <h3 style="text-align: center;">${requestScope.exception.message }</h3>
-    <button style="width: 150px;margin: 50px auto 0px auto;" class="btn btn-lg btn-success btn-block">点我返回上一步</button>
 </div>
 </body>
 </html>
