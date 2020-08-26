@@ -22,7 +22,16 @@
         <property name="suffix" value=".jsp"/>
     </bean>
     <!-- 放行静态资源 -->
-    <mvc:resources mapping="/static/js/**" location="/static/js/"/>
-    <mvc:resources mapping="/static/css/**" location="/static/css/"/>
-    <mvc:resources mapping="/static/image/**" location="/static/image/"/>
+    <mvc:resources mapping="/static/**" location="/static/"/>
+
+    <!-- 统一异常处理 -->
+    <bean id="simpleMappingExceptionResolver"
+          class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">system-error</prop>
+            </props>
+        </property>
+    </bean>
+    <bean class="pers.llj.crowdfunding.resolver.ExceptionResolver"/>
 </beans>

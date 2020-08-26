@@ -1,18 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>Title</title>
+    <title>首页</title>
 </head>
 <body>
-<h2>index.jsp</h2>
-<form action="${pageContext.request.contextPath}/admin/login" method="post">
-    <label>账号：
-        <input type="text" name="account">
-    </label><br>
-    <label>密码：
-        <input type="password" name="password">
-    </label><br>
-    <input type="submit" value="登录">
-</form>
+    <a href="${pageContext.request.contextPath}/dispatch/admin-login">跳转至管理员登陆页面</a>
 </body>
 </html>

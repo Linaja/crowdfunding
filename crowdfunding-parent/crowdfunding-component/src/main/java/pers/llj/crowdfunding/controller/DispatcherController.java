@@ -4,11 +4,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("dispatcher")
+@RequestMapping("dispatch")
 public class DispatcherController {
 
     @RequestMapping("success")
-    public String dispatcherSuccess(){
+    public String dispatchSuccess(){
         return "success";
+    }
+
+    @RequestMapping("admin-login")
+    public String dispatchAdminLogin() {
+        return "admin-login";
+    }
+
+    @RequestMapping("admin-main")
+    public String dispatchAdminMain() {
+        return "admin-main";
     }
 }
