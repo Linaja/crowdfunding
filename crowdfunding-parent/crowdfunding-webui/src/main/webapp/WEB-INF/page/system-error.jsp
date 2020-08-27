@@ -4,19 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <base href="http://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath }/"/>
     <title>尚筹网</title>
-    <link rel="stylesheet" href="static/css/bootstrap.min.css" crossorigin="anonymous">
-    <script src="static/js/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-    <script src="static/js/popper.min.js" crossorigin="anonymous"></script>
-    <script src="static/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <script>
-        $(function (){
-            $("#btn-return").click(function (){
-                window.history.back()
-            })
-        })
-    </script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid">
@@ -49,9 +38,6 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <h3 class="text-center">
-                    尚筹网系统消息
-                </h3>
                 <div class="jumbotron">
                     <h2>系统错误</h2>
                     <p>
@@ -67,5 +53,15 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        $("#btn-return").click(function () {
+            window.history.back()
+        })
+    })
+</script>
 </body>
 </html>

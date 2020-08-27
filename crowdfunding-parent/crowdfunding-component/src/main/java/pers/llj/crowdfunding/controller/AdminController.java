@@ -1,13 +1,18 @@
 package pers.llj.crowdfunding.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.google.gson.Gson;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pers.llj.crowdfunding.entity.Admin;
 import pers.llj.crowdfunding.exception.LoginFailedException;
 import pers.llj.crowdfunding.service.AdminService;
 import pers.llj.crowdfunding.util.CustomUtils;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 @Controller
 @RequestMapping("admin")
@@ -31,8 +36,21 @@ public class AdminController {
     }
 
     @RequestMapping("logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/dispatch/admin-login";
+    }
+
+    @ResponseBody
+    @RequestMapping("pageInfo")
+    public String getPageInfo(@RequestParam(defaultValue = "") String keyword,
+                              @RequestParam(defaultValue = "1") Integer pageNum,
+                              @RequestParam(defaultValue = "10") Integer pageSize
+                              ) {
+        PageInfo<Admin> pageInfo = adminService.getPageInfo(keyword, pageNum, pageSize);
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("rows", pageInfo.getList());
+        map.put("total", pageInfo.getTotal());
+        return new Gson().toJson(map);
     }
 }

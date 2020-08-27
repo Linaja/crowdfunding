@@ -42,6 +42,7 @@
             <mvc:exclude-mapping path="/dispatch/admin-login"/>
             <mvc:exclude-mapping path="/admin/login"/>
             <mvc:exclude-mapping path="/admin/logout"/>
+            <mvc:exclude-mapping path="/static/**"/>
             <bean class="pers.llj.crowdfunding.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

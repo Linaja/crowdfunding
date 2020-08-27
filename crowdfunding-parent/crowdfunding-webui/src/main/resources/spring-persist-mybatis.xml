@@ -27,5 +27,15 @@
     <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="mapperLocations" value="classpath:mybatis/mapper/AdminMapper.xml"/>
         <property name="dataSource" ref="dataSource"/>
+         <property name="plugins">
+                 <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <props>
+                            <prop key="helperDialect">mysql</prop>
+                            <prop key="reasonable">true</prop>
+                        </props>
+                    </property>
+                 </bean>
+         </property>
     </bean>
 </beans>

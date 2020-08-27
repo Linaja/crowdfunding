@@ -4,13 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <base href="http://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath }/" />
     <title>尚筹网</title>
-    <link rel="stylesheet" href="static/css/bootstrap.min.css" crossorigin="anonymous">
-    <script src="static/js/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-    <script src="static/js/popper.min.js" crossorigin="anonymous"></script>
-    <script src="static/js/bootstrap.min.js" crossorigin="anonymous"></script>
-
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid">
@@ -31,7 +26,7 @@
                         <li class="nav-item"><a class="nav-link" href="#">　主页</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">　关于</a></li>
                     </ul>
-                    <a class="btn btn-outline-primary my-2 my-sm-0" href="dispatch/admin-login">登录</a>
+                    <a class="btn btn-outline-primary my-2 my-sm-0" href="${pageContext.request.contextPath}/dispatch/admin-login">登录</a>
                 </div>
             </nav>
         </div>
@@ -53,13 +48,16 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Carousel Bootstrap First" src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg"/>
+                        <img class="d-block w-100" alt="Carousel Bootstrap First"
+                             src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg"/>
                     </div>
                     <div class="carousel-item active">
-                        <img class="d-block w-100" alt="Carousel Bootstrap Second" src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg"/>
+                        <img class="d-block w-100" alt="Carousel Bootstrap Second"
+                             src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg"/>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Carousel Bootstrap Third" src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg"/>
+                        <img class="d-block w-100" alt="Carousel Bootstrap Third"
+                             src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg"/>
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carousel-22472" data-slide="prev">
@@ -85,7 +83,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
-                        <img class="card-img-top" alt="Bootstrap Thumbnail First" src="https://www.layoutit.com/img/people-q-c-600-200-1.jpg"/>
+                        <img class="card-img-top" alt="Bootstrap Thumbnail First"
+                             src="https://www.layoutit.com/img/people-q-c-600-200-1.jpg"/>
                         <div class="card-block">
                             <h5 class="card-title">Card title</h5>
                             <p>
@@ -199,5 +198,8 @@
     </div>
     <div class="=row" style="height: 50px"></div>
 </div>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>
