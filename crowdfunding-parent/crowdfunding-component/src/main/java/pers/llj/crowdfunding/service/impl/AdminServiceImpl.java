@@ -24,8 +24,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void removeAdmin(Admin admin) {
-        adminMapper.deleteByPrimaryKey(admin.getAccount());
+    public void removeAdminByAccount(long account) {
+        adminMapper.deleteByPrimaryKey(account);
     }
 
     @Override
@@ -39,4 +39,6 @@ public class AdminServiceImpl implements AdminService {
         List<Admin> admins = adminMapper.selectByKeyword(keyword);
         return new PageInfo<>(admins);
     }
+
+
 }

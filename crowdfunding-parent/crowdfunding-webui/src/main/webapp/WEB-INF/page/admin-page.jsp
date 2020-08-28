@@ -135,7 +135,8 @@
                             <input type="text" class="form-control" id="input-text" placeholder="请输入关键字"
                                    aria-describedby="basic-addon1">
                             <div class="input-group-append">
-                                <input type="button" class="btn btn-outline-primary" value="查询" onclick="$('#table').bootstrapTable('refresh')"/>
+                                <input type="button" class="btn btn-outline-primary" value="查询"
+                                       onclick="$('#table').bootstrapTable('refresh')"/>
                             </div>
                         </div>
                     </form>
@@ -161,7 +162,7 @@
     $('#table').bootstrapTable({
         url: '/crowdfunding/admin/pageInfo',                   // 请求路径（一定要在前面加 /）
         method: 'post',                                        // 请求方式
-        contentType: "application/x-www-form-urlencoded",      // 请求方式为 post 时需要
+        contentType: 'application/x-www-form-urlencoded',      // 请求方式为 post 时需要
         queryParams: function (params) {                       // 请求参数（params 为框架提供）
             return {
                 keyword: $('#input-text').val(),               // 关键字
@@ -169,20 +170,27 @@
                 pageNum: (params.offset / params.limit) + 1    // 页码
             }
         },
-        pageSize: 10,                                          // 单页行数
+        //pageSize: 10,                                        // 单页行数（默认为 10）
         /*
         * 分页方式
         *   可选值：server、client
         *   client 表示由前端分页，后端传的 json 是一个数组：[{},{},{},{}]
         *   server 表示由后端分页，后端传的 json 需要封装 total 和 rows 属性：{'total':20, 'rows':[{},{},{},{}]}
         * */
-        sidePagination: "server",
+        sidePagination: 'server',
         pagination: true,                                      // 是否开启分页（即：显示分页样式）
         pageList: [10],                                        // 可选的单页行数（与单页行数一致则不会看到样式）
         cache: false,                                          // 是否启用缓存
-        columns: [{                                 // 表头（field 需要与 json 对应，title 为显示样式）
+        columns: [{
+            title: '序号',
+            align: 'center',
+            formatter: function (value, row, index) {
+                return ($("#table").bootstrapTable("getOptions").pageNumber - 1) * $("#table").bootstrapTable("getOptions").pageSize + index + 1
+            }
+        }, {                                 // 表头（field 需要与 json 对应，title 为显示样式）
             field: 'account',
-            title: '账号'
+            title: '账号',
+            class: 'account'
         }, {
             field: 'name',
             title: '昵称'
@@ -192,8 +200,38 @@
         }, {
             field: 'creationTime',
             title: '创建时间'
+        }, {
+            title: '操作',
+            align: 'center',
+            valign: 'middle',
+            formatter: function () {
+                let result = ""
+                result += "<span class='fas fa-edit' style='font-size: 16px; color: dodgerblue; margin: 0 5px'></span>";
+                result += "<span class='fas fa-trash-alt' style='font-size: 16px; color: orangered; margin: 0 5px' onclick='remove(this)'></span>";
+                return result
+            }
         }]
     })
+
+    // 删除功能
+    function remove(option) {
+        const admin = {
+            account: $(option).parent().prevAll('.account').text()
+        }
+        const requestBody = JSON.stringify(admin)
+        $.ajax({
+            url: '/crowdfunding/admin/remove',
+            type: 'post',
+            contentType: "application/json",
+            data: requestBody,
+            success: function () {
+                $('#table').bootstrapTable('refresh')
+            },
+            error: function () {
+                alert("操作失败")
+            }
+        })
+    }
 </script>
 </body>
 </html>

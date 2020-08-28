@@ -26,9 +26,4 @@ public class DispatcherController {
     public String dispatchAdminPage() {
         return "admin-page";
     }
-
-    @RequestMapping("pagination")
-    public String dispatchPagination() {
-        return "pagination";
-    }
 }

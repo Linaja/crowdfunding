@@ -7,9 +7,11 @@ public interface AdminService {
 
     void addAdmin(Admin admin);
 
-    void removeAdmin(Admin admin);
+    void removeAdminByAccount(long account);
 
     Admin getAdminByAccount(Admin admin);
 
     PageInfo<Admin> getPageInfo(String keyword, Integer pageNum, Integer pageSize);
+
+
 }

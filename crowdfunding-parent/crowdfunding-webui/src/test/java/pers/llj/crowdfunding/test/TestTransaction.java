@@ -21,7 +21,7 @@ public class TestTransaction {
     @Test
     public void testTx(){
         Admin admin = new Admin(123456789L, "001257");
-        adminService.removeAdmin(admin);
+        adminService.removeAdminByAccount(admin.getAccount());
         adminService.addAdmin(admin);
     }
 }
