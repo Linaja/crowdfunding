@@ -34,6 +34,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public void updateAdmin(Admin admin) {
+        adminMapper.updateByPrimaryKeySelective(admin);
+    }
+
+    @Override
     public PageInfo<Admin> getPageInfo(String keyword, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<Admin> admins = adminMapper.selectByKeyword(keyword);

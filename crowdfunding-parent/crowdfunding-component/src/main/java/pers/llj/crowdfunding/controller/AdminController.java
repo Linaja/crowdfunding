@@ -59,4 +59,20 @@ public class AdminController {
         adminService.removeAdminByAccount(admin.getAccount());
         return new Gson().toJson(ResultEntity.success(null));
     }
+
+    @ResponseBody
+    @RequestMapping(path = "getAdmin", method = RequestMethod.POST)
+    public String getAdmin(Admin admin) {
+        Admin dataBaseAdmin = adminService.getAdminByAccount(admin);
+        dataBaseAdmin.setPassword(null);
+        return new Gson().toJson(dataBaseAdmin);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "updateAdmin", method = RequestMethod.POST)
+    public String updateAdmin(@RequestBody Admin admin) {
+        admin.setPassword(CustomUtils.md5(admin.getPassword()));
+        adminService.updateAdmin(admin);
+        return new Gson().toJson(ResultEntity.success(null));
+    }
 }
