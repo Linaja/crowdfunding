@@ -75,4 +75,12 @@ public class AdminController {
         adminService.updateAdmin(admin);
         return new Gson().toJson(ResultEntity.success(null));
     }
+
+    @ResponseBody
+    @RequestMapping(path = "addAdmin", method = RequestMethod.POST)
+    public String addAdmin(@RequestBody Admin admin) {
+        admin.setPassword(CustomUtils.md5(admin.getPassword()));
+        adminService.addAdmin(admin);
+        return new Gson().toJson(ResultEntity.success(null));
+    }
 }

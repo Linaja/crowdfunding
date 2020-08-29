@@ -125,7 +125,6 @@
         </div>
         <div class="col-md-6">
             <div class="row">
-                <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <form class="form-inline">
                         <div class="input-group w-100">
@@ -141,7 +140,11 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <button class="btn btn-danger float-right" onclick="batchDelete()">批量删除</button>
+                    <button class="btn btn-primary" data-toggle='modal' data-target='#addModal'>新增</button>
+                </div>
             </div>
             <hr>
             <div class="row">
@@ -154,43 +157,82 @@
     </div>
 </div>
 
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<%-- 更新模态框 --%>
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">修改面板</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <h5 class="modal-title" id="updateModalLabel">修改面板</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form id="updateForm">
                     <div class="form-group">
-                        <label for="account" class="col-form-label">账号</label>
-                        <input type="text" class="form-control" id="account" name="account" readonly>
+                        <label for="updateAccount" class="col-form-label">账号</label>
+                        <input type="text" class="form-control" id="updateAccount" name="account" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="password" class="col-form-label">修改密码</label>
-                        <input type="password" class="form-control" id="password" name="password" autocomplete="off">
+                        <label for="updatePassword" class="col-form-label">修改密码</label>
+                        <input type="password" class="form-control" id="updatePassword" name="password"
+                               autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="name" class="col-form-label">修改昵称</label>
-                        <input type="text" class="form-control" id="name" name="name" autocomplete="off">
+                        <label for="updateName" class="col-form-label">修改昵称</label>
+                        <input type="text" class="form-control" id="updateName" name="name" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="eMail" class="col-form-label">修改邮箱</label>
-                        <input type="email" class="form-control" id="eMail" name="eMail" autocomplete="new-password">
+                        <label for="updateEMail" class="col-form-label">修改邮箱</label>
+                        <input type="email" class="form-control" id="updateEMail" name="eMail"
+                               autocomplete="new-password">
                     </div>
                     <div class="form-group">
-                        <label for="creationTime" class="col-form-label">创建时间</label>
-                        <input type="text" class="form-control" id="creationTime" name="creationTime" readonly>
+                        <label for="updateCreationTime" class="col-form-label">创建时间</label>
+                        <input type="text" class="form-control" id="updateCreationTime" name="creationTime" readonly>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary" onclick="update()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%-- 添加模态框 --%>
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">添加面板</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addForm">
+                    <div class="form-group">
+                        <label for="addAccount" class="col-form-label">账号</label>
+                        <input type="text" class="form-control" id="addAccount" name="account" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="addPassword" class="col-form-label">密码</label>
+                        <input type="password" class="form-control" id="addPassword" name="password" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="addName" class="col-form-label">昵称</label>
+                        <input type="text" class="form-control" id="addName" name="name" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="addEMail" class="col-form-label">邮箱</label>
+                        <input type="email" class="form-control" id="addEMail" name="eMail" autocomplete="new-password">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="add()">提交</button>
             </div>
         </div>
     </div>
@@ -222,7 +264,7 @@
         * */
         sidePagination: 'server',
         pagination: true,                                        // 是否开启分页功能
-        pageList: [10],                                          // 可选的单页行数（与单页行数一致则不会看到样式）
+        pageList: [10, 20],                                          // 可选的单页行数（与单页行数（默认为 10）一致则不会看到样式）
         cache: false,                                            // 是否启用缓存
         /*onDblClickCell: function (field, value, row, $element) { // 单元格双击事件（实现修改功能）
             if ($element.attr('class') != 'option'){
@@ -230,6 +272,8 @@
             }
         },*/
         columns: [{
+            checkbox: true
+        }, {
             title: '序号',
             align: 'center',
             formatter: function (value, row, index) {
@@ -257,7 +301,7 @@
             align: 'center',
             formatter: function () {
                 let result = ""
-                result += "<span data-toggle='modal' data-target='#updateModal' data-whatever='@mdo' class='fas fa-edit' style='font-size: 16px; color: dodgerblue; margin: 0 5px; cursor: pointer'></span>";
+                result += "<span data-toggle='modal' data-target='#updateModal' class='fas fa-edit' style='font-size: 16px; color: dodgerblue; margin: 0 5px; cursor: pointer'></span>";
                 result += "<span class='fas fa-trash-alt' style='font-size: 16px; color: orangered; margin: 0 5px; cursor: pointer' onclick='remove(this)'></span>";
                 return result
             }
@@ -287,11 +331,18 @@
     // 打开模态框的钩子函数（将数据传入模态框中）
     $('#updateModal').on('show.bs.modal', function (e) {
         const parent = $(e.relatedTarget).parent();
-        const texts = [parent.prevAll('.account').text(),'',parent.prevAll('.name').text(),parent.prevAll('.eMail').text(),parent.prevAll('.creationTime').text()]
+        const texts = [parent.prevAll('.account').text(), '', parent.prevAll('.name').text(), parent.prevAll('.eMail').text(), parent.prevAll('.creationTime').text()]
         let i = 0;
-        $('#updateModal').find('input').each(function (){
+        $('#updateModal').find('input').each(function () {
             $(this).val(texts[i])
             i++
+        })
+    })
+
+    // 打开模态框的钩子函数（将数据传入模态框中）
+    $('#addModal').on('show.bs.modal', function (e) {
+        $('#addModal').find('input').each(function () {
+            $(this).val("")
         })
     })
 
@@ -313,6 +364,49 @@
             error: function () {
                 alert("操作失败")
             }
+        })
+    }
+
+    // 添加功能
+    function add() {
+        const formObject = {};
+        $.each($("#addForm").serializeArray(), function (i, item) {
+            formObject[item.name] = item.value;
+        })
+        $.ajax({
+            url: '/crowdfunding/admin/addAdmin',
+            type: 'post',
+            contentType: "application/json",
+            data: JSON.stringify(formObject),
+            success: function () {
+                $('#addModal').modal('hide');
+                $('#table').bootstrapTable('refresh')
+            },
+            error: function () {
+                alert("操作失败")
+            }
+        })
+    }
+
+    function batchDelete() {
+        const rows = $("#table").bootstrapTable('getSelections');
+        rows.map(function (item) {
+            const admin = {
+                account: item.account
+            }
+            const requestBody = JSON.stringify(admin)
+            $.ajax({
+                url: '/crowdfunding/admin/remove',
+                type: 'post',
+                contentType: "application/json",
+                data: requestBody,
+                success: function () {
+                    $('#table').bootstrapTable('refresh')
+                },
+                error: function () {
+                    alert("操作失败")
+                }
+            })
         })
     }
 </script>
