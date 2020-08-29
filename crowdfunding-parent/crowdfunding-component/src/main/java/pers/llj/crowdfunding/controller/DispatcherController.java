@@ -26,4 +26,9 @@ public class DispatcherController {
     public String dispatchAdminPage() {
         return "admin-page";
     }
+
+    @RequestMapping("role-page")
+    public String dispatchRolePage() {
+        return "role-page";
+    }
 }

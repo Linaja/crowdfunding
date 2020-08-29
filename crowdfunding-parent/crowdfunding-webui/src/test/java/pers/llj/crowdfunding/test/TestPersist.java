@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pers.llj.crowdfunding.entity.Admin;
+import pers.llj.crowdfunding.entity.Role;
 import pers.llj.crowdfunding.entity.mapper.AdminMapper;
+import pers.llj.crowdfunding.entity.mapper.RoleMapper;
 import pers.llj.crowdfunding.util.CustomUtils;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -27,6 +30,9 @@ public class TestPersist {
     @Autowired
     private AdminMapper mapper;
 
+    @Autowired
+    private RoleMapper roleMapper;
+
     @Test
     public void testConnection() throws SQLException {
         Connection connection = dataSource.getConnection();
@@ -36,8 +42,6 @@ public class TestPersist {
     @Test
     public void testMybatis() {
         Admin admin = new Admin(123456789L, "001257");
-        mapper.deleteByPrimaryKey(admin.getAccount());
-        mapper.insertSelective(admin);
         System.out.println(mapper.selectByPrimaryKey(admin.getAccount()));
     }
 
@@ -50,5 +54,11 @@ public class TestPersist {
            mapper.insertSelective(admin);
            Thread.sleep(2);
         }
+    }
+
+    @Test
+    public void testRoleFunction(){
+        System.out.println(roleMapper);
+        System.out.println(roleMapper.selectByKeyword(""));
     }
 }

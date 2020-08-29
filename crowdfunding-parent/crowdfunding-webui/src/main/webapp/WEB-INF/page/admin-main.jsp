@@ -67,7 +67,7 @@
                         <div class="card-body">
                             <ul class="list-group">
                                 <li class="list-group-item"><a href="${pageContext.request.contextPath}/dispatch/admin-page">管理员维护</a></li>
-                                <li class="list-group-item">二级菜单</li>
+                                <li class="list-group-item"><a href="${pageContext.request.contextPath}/dispatch/role-page">角色维护</a></li>
                                 <li class="list-group-item">二级菜单</li>
                                 <li class="list-group-item">二级菜单</li>
                                 <li class="list-group-item">二级菜单</li>

@@ -56,7 +56,8 @@
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-center" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="btn btn-link btn-block text-center" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 权限管理
                             </button>
                         </h2>
@@ -64,8 +65,9 @@
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item disabled" aria-disabled="true"><a>管理员维护</a></li>
-                                <li class="list-group-item list-group-item-action"><a href="${pageContext.request.contextPath}/dispatch/role-page">角色维护</a></li>
+                                <li class="list-group-item list-group-item-action"><a
+                                        href="${pageContext.request.contextPath}/dispatch/admin-page">管理员维护</a></li>
+                                <li class="list-group-item disabled" aria-disabled="true"><a>角色维护</a></li>
                             </ul>
                         </div>
                     </div>
@@ -73,7 +75,10 @@
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">一级菜单</button>
+                            <button class="btn btn-link btn-block text-center collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">一级菜单
+                            </button>
                         </h2>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
@@ -117,16 +122,18 @@
                             <div class="input-group-prepend">
                                 <label for="input-text" class="input-group-text" id="basic-addon1">条件查询</label>
                             </div>
-                            <input type="text" class="form-control" id="input-text" placeholder="请输入关键字" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="input-text" placeholder="请输入关键字"
+                                   aria-describedby="basic-addon1">
                             <div class="input-group-append">
-                                <input type="button" class="btn btn-outline-primary" value="查询" onclick="$('#table').bootstrapTable('refresh')"/>
+                                <input type="button" class="btn btn-outline-primary" id="input-btn" value="查询"
+                                       onclick="table.bootstrapTable('refresh')"/>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-3">
-                    <button class="btn btn-danger float-right" onclick="batchDelete()">批量删除</button>
+                    <button class="btn btn-danger float-right" onclick="batchRemove()">批量删除</button>
                     <button class="btn btn-primary" data-toggle='modal' data-target='#addModal'>新增</button>
                 </div>
             </div>
@@ -154,32 +161,21 @@
             <div class="modal-body">
                 <form id="updateForm">
                     <div class="form-group">
-                        <label for="updateAccount" class="col-form-label">账号</label>
-                        <input type="text" class="form-control" id="updateAccount" name="account" readonly>
+                        <label for="updateId" class="col-form-label">角色ID</label>
+                        <input type="text" class="form-control" id="updateId" name="id" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="updatePassword" class="col-form-label">修改密码</label>
-                        <input type="password" class="form-control" id="updatePassword" name="password"
-                               autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="updateName" class="col-form-label">修改昵称</label>
+                        <label for="updateName" class="col-form-label">修改角色名</label>
                         <input type="text" class="form-control" id="updateName" name="name" autocomplete="off">
                     </div>
-                    <div class="form-group">
-                        <label for="updateEMail" class="col-form-label">修改邮箱</label>
-                        <input type="email" class="form-control" id="updateEMail" name="eMail"
-                               autocomplete="new-password">
-                    </div>
-                    <div class="form-group">
-                        <label for="updateCreationTime" class="col-form-label">创建时间</label>
-                        <input type="text" class="form-control" id="updateCreationTime" name="creationTime" readonly>
-                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" onclick="update()">提交</button>
+                <button type="button" class="btn btn-primary"
+                        onclick="addOrUpdate('/crowdfunding/role/update', $('#updateModal'))">提交
+                </button>
             </div>
         </div>
     </div>
@@ -197,26 +193,16 @@
             <div class="modal-body">
                 <form id="addForm">
                     <div class="form-group">
-                        <label for="addAccount" class="col-form-label">账号</label>
-                        <input type="text" class="form-control" id="addAccount" name="account" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="addPassword" class="col-form-label">密码</label>
-                        <input type="password" class="form-control" id="addPassword" name="password" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="addName" class="col-form-label">昵称</label>
+                        <label for="addName" class="col-form-label">角色名</label>
                         <input type="text" class="form-control" id="addName" name="name" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="addEMail" class="col-form-label">邮箱</label>
-                        <input type="email" class="form-control" id="addEMail" name="eMail" autocomplete="new-password">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" onclick="add()">提交</button>
+                <button type="button" class="btn btn-primary"
+                        onclick="addOrUpdate('/crowdfunding/role/add', $('#addModal'))">提交
+                </button>
             </div>
         </div>
     </div>
@@ -228,17 +214,25 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/bootstrap-table.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/locale/bootstrap-table-zh-CN.min.js"></script>
 <script>
+    const table = $('#table')
+    const input = $('#input-text')
 
     /* 对 bootstrap table 的设置 */
-    $('#table').bootstrapTable({
-        url: '/crowdfunding/admin/pageInfo',                   // 请求路径（一定要在前面加 /）
+    table.bootstrapTable({
+        url: '/crowdfunding/role/get/keyword',                   // 请求路径（一定要在前面加 /）
         method: 'post',                                        // 请求方式
         contentType: 'application/x-www-form-urlencoded',      // 请求方式为 post 时需要
-        queryParams: function (params) {                       // 请求参数
+        queryParams: function (params) {
             return {
-                keyword: $('#input-text').val(),               // 关键字（绑定输入框，实现搜索功能）
-                pageSize: params.limit,                        // 页面大小
-                pageNum: (params.offset / params.limit) + 1    // 页码
+                keyword: input.val(),
+                pageSize: params.limit,
+                pageNum: (params.offset / params.limit) + 1
+            }
+        },
+        responseHandler: function (res) {                     // 将后端的 json 数据修改为能接收的格式
+            return {
+                total: res.data.total,
+                rows: res.data.list
             }
         },
         /*
@@ -247,39 +241,26 @@
         *   server 表示由后端分页，json 需要封装 total 和 rows 属性：{'total':20, 'rows':[{},{},{},{}]}
         * */
         sidePagination: 'server',
-        pagination: true,                                        // 是否开启分页功能
-        pageList: [10, 20],                                          // 可选的单页行数（与单页行数（默认为 10）一致则不会看到样式）
-        cache: false,                                            // 是否启用缓存
-        /*onDblClickCell: function (field, value, row, $element) { // 单元格双击事件（实现修改功能）
-            if ($element.attr('class') != 'option'){
-                $element.attr('contenteditable', 'true')
-            }
-        },*/
+        pagination: true,                                          // 是否开启分页功能
+        pageList: [10, 20],                                        // 可选的单页行数（与单页行数（默认为 10）一致则不会看到样式）
+        cache: false,                                              // 是否启用缓存
         columns: [{
             checkbox: true
         }, {
             title: '序号',
             align: 'center',
             formatter: function (value, row, index) {
-                const options = $("#table").bootstrapTable("getOptions");
+                const options = table.bootstrapTable("getOptions");
                 return (options.pageNumber - 1) * options.pageSize + index + 1
             }
         }, {                                 // 表头（field 需要与 json 对应，title 为显示样式）
-            field: 'account',
-            title: '账号',
-            class: 'account'
+            field: 'id',
+            title: '角色id',
+            class: 'id',
         }, {
             field: 'name',
-            title: '昵称',
+            title: '角色名',
             class: 'name'
-        }, {
-            field: 'eMail',
-            title: '邮箱',
-            class: 'eMail'
-        }, {
-            field: 'creationTime',
-            title: '创建时间',
-            class: 'creationTime'
         }, {
             title: '操作',
             class: 'option',
@@ -287,36 +268,16 @@
             formatter: function () {
                 let result = ""
                 result += "<span data-toggle='modal' data-target='#updateModal' class='fas fa-edit' style='font-size: 16px; color: dodgerblue; margin: 0 5px; cursor: pointer'></span>";
-                result += "<span class='fas fa-trash-alt' style='font-size: 16px; color: orangered; margin: 0 5px; cursor: pointer' onclick='remove(this)'></span>";
+                result += "<span class='fas fa-trash-alt' style='font-size: 16px; color: orangered; margin: 0 5px; cursor: pointer' onclick='remove($(this).parent().prevAll(\".id\").text())'></span>"; // onclick 方法参数的双引号一定要加
                 return result
             }
         }]
     })
 
-    // 删除功能
-    function remove(option) {
-        const admin = {
-            account: $(option).parent().prevAll('.account').text()
-        }
-        const requestBody = JSON.stringify(admin)
-        $.ajax({
-            url: '/crowdfunding/admin/remove',
-            type: 'post',
-            contentType: "application/json",
-            data: requestBody,
-            success: function () {
-                $('#table').bootstrapTable('refresh')
-            },
-            error: function () {
-                alert("操作失败")
-            }
-        })
-    }
-
-    // 打开模态框的钩子函数（将数据传入模态框中）
+    // 打开更新模态框的钩子函数（将数据传入模态框中）
     $('#updateModal').on('show.bs.modal', function (e) {
         const parent = $(e.relatedTarget).parent();
-        const texts = [parent.prevAll('.account').text(), '', parent.prevAll('.name').text(), parent.prevAll('.eMail').text(), parent.prevAll('.creationTime').text()]
+        const texts = [parent.prevAll('.id').text(), parent.prevAll('.name').text()]
         let i = 0;
         $('#updateModal').find('input').each(function () {
             $(this).val(texts[i])
@@ -324,76 +285,73 @@
         })
     })
 
-    // 打开模态框的钩子函数（将缓存数据清除）
+    // 打开添加模态框的钩子函数（将缓存数据清除）
     $('#addModal').on('show.bs.modal', function () {
         $('#addModal').find('input').each(function () {
             $(this).val("")
         })
     })
 
-    // 更新功能
-    function update() {
-        const formObject = {};
-        $.each($("#updateForm").serializeArray(), function (i, item) {
-            formObject[item.name] = item.value;
+
+    // 添加或更新功能
+    function addOrUpdate(url, modal) {
+        const serialize = {};
+        $.each(modal.find('form').serializeArray(), function (i, item) {
+            serialize[item.name] = item.value;
         })
+        ajaxCommon(url, JSON.stringify(serialize), function () {
+            modal.modal('hide')
+        })
+    }
+
+    // 删除功能
+    function remove(id) {
+        ajaxCommon('/crowdfunding/role/remove', JSON.stringify({id: id}), function () {
+        })
+    }
+
+    // 批量删除功能
+    function batchRemove() {
+        table.bootstrapTable('getSelections').map(function (item) {
+            remove(item.id)
+        })
+    }
+
+    // 公共的 ajax 提交方法
+    function ajaxCommon(url, json, otherOptionWithSuccess) {
         $.ajax({
-            url: '/crowdfunding/admin/updateAdmin',
+            url: url,
             type: 'post',
             contentType: "application/json",
-            data: JSON.stringify(formObject),
+            data: json,
             success: function () {
-                $('#updateModal').modal('hide');
-                $('#table').bootstrapTable('refresh')
+                otherOptionWithSuccess()
+                updateTable()
             },
-            error: function () {
-                alert("操作失败")
+            error: function (response) {
+                console.log(response)
             }
         })
     }
 
-    // 添加功能
-    function add() {
-        const formObject = {};
-        $.each($("#addForm").serializeArray(), function (i, item) {
-            formObject[item.name] = item.value;
-        })
-        $.ajax({
-            url: '/crowdfunding/admin/addAdmin',
-            type: 'post',
-            contentType: "application/json",
-            data: JSON.stringify(formObject),
-            success: function () {
-                $('#addModal').modal('hide');
-                $('#table').bootstrapTable('refresh')
-            },
-            error: function () {
-                alert("操作失败")
-            }
-        })
-    }
+    let oldValue;
 
-    function batchDelete() {
-        const rows = $("#table").bootstrapTable('getSelections');
-        rows.map(function (item) {
-            const admin = {
-                account: item.account
-            }
-            const requestBody = JSON.stringify(admin)
-            $.ajax({
-                url: '/crowdfunding/admin/remove',
-                type: 'post',
-                contentType: "application/json",
-                data: requestBody,
-                success: function () {
-                    $('#table').bootstrapTable('refresh')
-                },
-                error: function () {
-                    alert("操作失败")
-                }
-            })
-        })
+    $("#input-btn").click(function () {
+        oldValue = input.val()
+    })
+
+    // 解决了更新表格的一些 bug
+    function updateTable() {
+        const newValue = input.val();
+        if ($.trim(oldValue) !== $.trim(newValue)) {
+            input.val(oldValue)
+            table.bootstrapTable('refresh')
+            input.val(newValue)
+        }else {
+            table.bootstrapTable('refresh')
+        }
     }
 </script>
 </body>
 </html>
+
