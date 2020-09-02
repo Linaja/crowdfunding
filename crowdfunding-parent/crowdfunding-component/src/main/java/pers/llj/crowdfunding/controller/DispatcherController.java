@@ -31,4 +31,9 @@ public class DispatcherController {
     public String dispatchRolePage() {
         return "role-page";
     }
+
+    @RequestMapping("menu-page")
+    public String dispatchMenuPage() {
+        return "menu-page";
+    }
 }

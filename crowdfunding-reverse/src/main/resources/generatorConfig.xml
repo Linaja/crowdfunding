@@ -44,6 +44,6 @@
         </javaClientGenerator>
 
         <!-- 表和实体类的对应关系 -->
-        <table tableName="role" domainObjectName="Role" />
+        <table tableName="menu" domainObjectName="Menu" />
     </context>
 </generatorConfiguration>

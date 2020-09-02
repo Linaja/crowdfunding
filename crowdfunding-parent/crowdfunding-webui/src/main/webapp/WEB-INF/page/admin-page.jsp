@@ -16,99 +16,16 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div class="row bg-light fixed-top">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <!-- 主标题 -->
-                <span class="navbar-brand">尚筹网</span>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">　主页</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">　关于</a></li>
-                    </ul>
-                    <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ${sessionScope.admin.name}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">个人中心</a>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/logout">退出登录</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
+
+    <%@include file="include-nav.jsp"%>
 
     <div style="height: 100px;"></div>
 
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-2">
-            <div class="accordion text-center" id="accordionExample">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-center" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                权限管理
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item disabled" aria-disabled="true"><a>管理员维护</a></li>
-                                <li class="list-group-item list-group-item-action"><a href="${pageContext.request.contextPath}/dispatch/role-page">角色维护</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">一级菜单</button>
-                        </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">二级菜单</li>
-                                <li class="list-group-item">二级菜单</li>
-                                <li class="list-group-item">二级菜单</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-center collapsed" type="button"
-                                    data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                    aria-controls="collapseThree">
-                                一级菜单
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                         data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">二级菜单</li>
-                                <li class="list-group-item">二级菜单</li>
-                                <li class="list-group-item">二级菜单</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        <%@include file="include-sidebar.jsp"%>
+
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-8">
@@ -184,7 +101,6 @@
         </div>
     </div>
 </div>
-
 <%-- 添加模态框 --%>
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog">
